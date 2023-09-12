@@ -1,4 +1,4 @@
-<img width="597" alt="image" src="https://github.com/MRadhityaUtomo/inventory-project/assets/124948533/9a84cb2a-3b65-4959-9933-afc8fa0f72fa">[Application Link](https://arti-facts.adaptable.app/)
+[Application Link](https://arti-facts.adaptable.app/)
 ## 1.Membuat Sebuah Project Django Baru
 -- Inisiasi Repo Github --
 + Membuat direktori baru untuk repo pada github (serta melakukan config lain dan cloning)
