@@ -25,7 +25,7 @@ pip install -r requirements.txt # Instalasi dependencies
 + Menambahkan `"*"` pada `ALLOWED_HOST` di settings.py dalam direktori proyek (settings.py muncul sebagai framework setelah inisiasi proyek django baru).
   + `python manage.py runserver` untuk menyalakan koneksi ke django dan dapat di test pada link ->   
     `http://localhost:8000 `, jika roket sudah beranimasi maka koneksi sudah established
-# add, commit, push
+## add, commit, push
 + Membuat `.gitignore` yang akan mengabaikan folder env dan db.sqlite3 saat melakukan add,commit,push.
 
 ## 2. Melakukan deployment ke Adaptable terhadap aplikasi yang sudah dibuat sehingga nantinya dapat diakses oleh teman-temanmu melalui Internet.
