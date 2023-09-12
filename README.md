@@ -120,7 +120,12 @@ python manage.py migrate
 
 ## Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
 ![Flowchart](https://github.com/MRadhityaUtomo/inventory-project/assets/124948533/524162bc-8c91-4699-bea1-b01d1cd17dda)
-
+1. Link atau request user akan diproses sebagai client yang mengirim request kepada browser
+2. Request tersebut bernama HTTP Request dan akan diproses oleh `urls.py` dengan mencari url pattern yang cocok dengan request client didalam file tersebut
+3. Jika url pattern ditemukan, `urls.py` akan memanggil function dalam `views.py` sesuai dengan url pada request
+4. `views.py` mendapatkan data serta cara kerja/logika aplikasi dari model - model  pada `models.py`
+5. `views.py` akan mengirimkan render atau tampilan halaman request menggunakan template, dalam contoh ini `main.html`
+6. tampilan tersebut lalu dikirim kembali ke client/user sebagai HTTP Response
 
 
 ## Mengapa kita menggunakan virtual environment? Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment?
