@@ -47,14 +47,6 @@ INSTALLED_APPS = [
 ```
 + Inisiasi link aplikasi main dengan menambahkan pola url pada `urlpatterns` difile proyek (bukan main)
 ```python
-INSTALLED_APPS = [
-  ...,
-  'main',
-  ...
-]
-```
-+ Buatlah `urls.py` pada folder `APPNAME` dengan kode:
-```python
 from django.contrib import admin
 from django.urls import path, include
 
@@ -68,11 +60,15 @@ urlpatterns = [
 ## 5. Membuat model pada aplikasi main dengan nama Item dan memiliki atribut wajib
 + Implementasi django import : models dan membuat model `item` dengan attribute pada tugas, serta attribute tambahan :
 ```python
-INSTALLED_APPS = [
-    ...,
-    'main',
-    ...
-]
+from django.db import models
+
+# Create your models here.
+class Item(models.Model):
+    name = models.CharField(max_length=255)
+    amount = models.IntegerField()
+    description = models.TextField()
+    attack = models.IntegerField(default='0000000', editable=False)
+    defense = models.IntegerField(default='0000000', editable=False)
 ```
 
 ## 6. Membuat sebuah fungsi pada views.py untuk dikembalikan ke dalam sebuah template HTML yang menampilkan nama aplikasi serta nama dan kelas kamu.
