@@ -1,5 +1,5 @@
 [Application Link](https://arti-facts.adaptable.app/)
-# Step
+# Step by Step
 ## 1. Membuat Sebuah Project Django Baru
 -- Inisiasi Repo Github --
 + Membuat direktori baru untuk repo pada github (serta melakukan config lain dan cloning)
@@ -120,6 +120,16 @@ python manage.py migrate
 ```
 + Add, Commit, Push dan menunggu deploy dari adaptable.
 
+## Mengapa kita menggunakan virtual environment? Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment?
++ Virtual enviroment dibutuhkan untuk melakukan organisasi dependencies antara proyek agar tidak saling mengganggu development satu sama lain.
++ Kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment, namun bad-practice dengan beberapa resiko sebagai berikut :
+```
++ Dependency conflicts antar proyek
++ Tidak adanya control terhadap versi
++ Security vulnerabilities
++ Kurangnya portability dan reproducibility
++ Mempersulit setup dan maintenance
+```
 
 ## Jelaskan apakah itu MVC, MVT, MVVM dan perbedaan dari ketiganya.
 1. MVC (Model-View-Controller) : Sebuah pola pada industri software, dikemukakan oleh Trygve Reenskaug pada 1970. Inti dari pola tersebut adalah membagi masalah dalam aplikasi mejadi 3 bagian :
