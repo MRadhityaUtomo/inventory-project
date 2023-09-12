@@ -1,3 +1,5 @@
+<img width="114" alt="image" src="https://github.com/MRadhityaUtomo/inventory-project/assets/124948533/3d89fda0-9d44-48e2-8c6e-3aeac7b37439">
+
 [Application Link](https://arti-facts.adaptable.app/)
 # Step by Step
 ## 1. Membuat Sebuah Project Django Baru
