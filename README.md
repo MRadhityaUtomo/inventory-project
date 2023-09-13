@@ -32,6 +32,13 @@ pip install -r requirements.txt # Instalasi dependencies
 
 ## 2. Melakukan deployment ke Adaptable terhadap aplikasi yang sudah dibuat sehingga nantinya dapat diakses oleh teman-temanmu melalui Internet.
 + Melakukan deployment aplikasi menggunakan adaptable dengan repo pada github.
++ Setting pada deployment :
+```
+Python App Template sebagai template deployment, PostgreSQL sebagai tipe basis data yang akan digunakan, versi Python dengan spesifikasi aplikasimu (my case it's 3.10.)
+Pada bagian Start Command masukkan perintah python manage.py migrate && gunicorn appname.wsgi.
+Masukkan nama aplikasi yang juga akan menjadi nama domain situs web aplikasimu.
+Centang bagian HTTP Listener on PORT dan klik Deploy App untuk memulai proses deployment aplikasi.
+```
 
 ## 3. Membuat aplikasi dengan nama main pada proyek tersebut.
 + Menjalankan command :
