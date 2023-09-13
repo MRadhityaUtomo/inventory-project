@@ -30,7 +30,7 @@ pip install -r requirements.txt # Instalasi dependencies
 ## add, commit, push
 + Membuat `.gitignore` yang akan mengabaikan folder env dan db.sqlite3 saat melakukan add,commit,push.
 
-## 2. Melakukan deployment ke Adaptable terhadap aplikasi yang sudah dibuat sehingga nantinya dapat diakses oleh teman-temanmu melalui Internet.
+## 2. Melakukan deployment ke Adaptable terhadap aplikasi yang sudah dibuat sehingga nantinya dapat diakses oleh teman-temanmu melalui Internet. (Note : Better practice untuk deploy saat semuanya sudah beres)
 + Melakukan deployment aplikasi menggunakan adaptable dengan repo pada github.
 + Setting pada deployment :
 ```
