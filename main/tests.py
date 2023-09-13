@@ -10,7 +10,7 @@ class mainTest(TestCase):
         response = Client().get('/main/')
         self.assertTemplateUsed(response, 'main.html')
 
-    def setUp(self):
+    def setUp(self):  #Test pengecekan initiate suatu object model item
         Item.objects.create(name="Journal",amount="1",
                             description=
                             "Something to remind, vent to, and cherish",
@@ -20,7 +20,7 @@ class mainTest(TestCase):
                             "A fair ticket to the comifuro festival, each one a different party and story",
                             connection="Keepsake")
         
-    def test_items_can_created(self):
+    def test_items_can_created(self): #Test apakah attribute setelah inisiasi benar
         journal = Item.objects.get(name="Journal")
         fairTicket = Item.objects.get(name="Fair ticket")
         self.assertEqual(journal.name, "Journal")
