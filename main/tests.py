@@ -12,11 +12,11 @@ class mainTest(TestCase):
 
     def setUp(self):  #Test pengecekan initiate suatu object model item
         Item.objects.create(name="Journal",amount="1",
-                            description=
+                            flavour_text=
                             "Something to remind, vent to, and cherish",
                             connection="Irreplaceable")
         Item.objects.create(name="Fair ticket",amount="4",
-                            description=
+                            flavour_text=
                             "A fair ticket to the comifuro festival, each one a different party and story",
                             connection="Keepsake")
         
