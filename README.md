@@ -532,21 +532,30 @@ path('json/<int:id>/', show_json_by_id, name='show_json_by_id'),
 
 ## Implementasi 
 1. HTML <br>
+
    ![messageImage_1695131518037](https://github.com/MRadhityaUtomo/inventory-project/assets/124948533/a4d7aa6b-6b0c-459b-8244-3802947967a6)
    ![messageImage_1695131536131](https://github.com/MRadhityaUtomo/inventory-project/assets/124948533/23745c49-3d64-4878-8207-a3d25d2e8cb9)
+   
 <br>
-2. XML <br>
+3. XML <br>
+
    ![messageImage_1695131474363](https://github.com/MRadhityaUtomo/inventory-project/assets/124948533/b8f26b81-6c2a-4815-b2fd-02c8696958e1)
    ![messageImage_1695131496132](https://github.com/MRadhityaUtomo/inventory-project/assets/124948533/59f278f1-6e7e-44c3-8287-d9b3136e1ffb)
+   
 <br>
-3. JSON <br>
+4. JSON <br>
+
    ![messageImage_1694880338823](https://github.com/MRadhityaUtomo/inventory-project/assets/124948533/a7f1f6f7-befc-4602-884c-73c4a0506e4c)
    ![messageImage_1694880358225](https://github.com/MRadhityaUtomo/inventory-project/assets/124948533/2e1f9ae9-4f5a-488d-816a-b15b8dc253ce)
+   
 <br>
-4. XML by id <br>
+5. XML by id <br>
+
    ![messageImage_1695132549760](https://github.com/MRadhityaUtomo/inventory-project/assets/124948533/04175b87-8b8e-45a3-981e-52783f6eccce)
+   
 <br>
-5. JSON by id <br>
+6. JSON by id <br>
+
    ![messageImage_1695132656203](https://github.com/MRadhityaUtomo/inventory-project/assets/124948533/85bca61f-1e0c-418f-8c9a-86a008a46931)
 
 
