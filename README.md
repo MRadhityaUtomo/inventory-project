@@ -186,7 +186,8 @@ GET, pada umumnya menyediakan parameter request dalam bentuk string yang langsun
 POST, meletakkan parameter requestnya pada message body, serta melakukan modifikasi pada state server saat mengirim data kepada server.
 
 ## Perbedaan utama antara XML, JSON, dan HTML dalam konteks pengiriman data
-![Uploading image.png…]()
+![fish-spinning](https://github.com/MRadhityaUtomo/inventory-project/assets/124948533/107b791e-b53e-4866-ac27-ea5c943d8b20)
+
 
 (Still in progress)
 
