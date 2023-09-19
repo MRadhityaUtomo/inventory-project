@@ -1,4 +1,4 @@
-<img width="114" alt="image" src="https://github.com/MRadhityaUtomo/inventory-project/assets/124948533/3d89fda0-9d44-48e2-8c6e-3aeac7b37439">
+![fish-spinning](https://github.com/MRadhityaUtomo/inventory-project/assets/124948533/da13490f-0e1e-45f1-995a-61a2af637637)
 
 # TUGAS 1
 
@@ -178,6 +178,7 @@ Perbedaannya dengan MVC adalah controller diimplementasi oleh framework dan meng
 <br>
 <br>
 <br>
+
 # TUGAS 2
 
 ## Perbedaan form GET dan form POST <br>
@@ -186,10 +187,19 @@ GET, pada umumnya menyediakan parameter request dalam bentuk string yang langsun
 POST, meletakkan parameter requestnya pada message body, serta melakukan modifikasi pada state server saat mengirim data kepada server.
 
 ## Perbedaan utama antara XML, JSON, dan HTML dalam konteks pengiriman data
-![fish-spinning](https://github.com/MRadhityaUtomo/inventory-project/assets/124948533/107b791e-b53e-4866-ac27-ea5c943d8b20)
-
-
-(Still in progress)
+<br>
+XML (eXtensible Markup Language):
+- Struktur Data: XML menyimpan data dalam struktur pohon dengan namespace untuk mengkategorikan data. Ini memungkinkan untuk representasi hierarki yang kompleks.
+- Tag: XML memiliki tag yang telah ditentukan, tetapi pengguna masih dapat membuat atau menambahkan tag kustom sesuai kebutuhan.
+- Jenis Data: XML mendukung berbagai jenis data, seperti string, integer, boolean, tanggal, gambar, namespace, dan tipe kustom sesuai kebutuhan.
+<br>
+JSON (JavaScript Object Notation):
+- Struktur Data: JSON menyimpan data dalam struktur mirip dengan dictionary pada Python, menggunakan pasangan key-value. Ini menghasilkan struktur data yang lebih sederhana dan ringkas dibandingkan dengan XML.
+- Tag: JSON tidak menggunakan tag seperti XML, tetapi mengandalkan key-value pairs, sehingga sintaksisnya lebih ringkas.
+- Jenis Data: JSON biasanya digunakan untuk mengirim data melalui internet karena formatnya ringkas dan mudah ditulis. Ini memiliki dukungan yang kuat dalam pengembangan aplikasi web dan API, terutama karena keterkaitannya dengan - JavaScript.
+<br>
+HTML (HyperText Markup Language):
+- Struktur Data: HTML digunakan untuk membangun struktur dan tampilan halaman web, bukan untuk pengiriman data. Ini memiliki tag yang telah ditent
 
 <br>
 
@@ -516,3 +526,29 @@ from main.views import show_main, create_product, show_xml, show_json, show_xml_
 path('xml/<int:id>/', show_xml_by_id, name='show_xml_by_id'),
 path('json/<int:id>/', show_json_by_id, name='show_json_by_id'), 
 ```
+
+<br>
+<br>
+
+## Implementasi 
+1. HTML
+   ![messageImage_1695131518037](https://github.com/MRadhityaUtomo/inventory-project/assets/124948533/a4d7aa6b-6b0c-459b-8244-3802947967a6)
+   ![messageImage_1695131536131](https://github.com/MRadhityaUtomo/inventory-project/assets/124948533/23745c49-3d64-4878-8207-a3d25d2e8cb9)
+<br>
+2. XML
+   ![messageImage_1695131474363](https://github.com/MRadhityaUtomo/inventory-project/assets/124948533/b8f26b81-6c2a-4815-b2fd-02c8696958e1)
+   ![messageImage_1695131496132](https://github.com/MRadhityaUtomo/inventory-project/assets/124948533/59f278f1-6e7e-44c3-8287-d9b3136e1ffb)
+<br>
+3. JSON
+   ![messageImage_1694880338823](https://github.com/MRadhityaUtomo/inventory-project/assets/124948533/a7f1f6f7-befc-4602-884c-73c4a0506e4c)
+   ![messageImage_1694880358225](https://github.com/MRadhityaUtomo/inventory-project/assets/124948533/2e1f9ae9-4f5a-488d-816a-b15b8dc253ce)
+<br>
+4. XML by id
+   ![messageImage_1695132549760](https://github.com/MRadhityaUtomo/inventory-project/assets/124948533/04175b87-8b8e-45a3-981e-52783f6eccce)
+<br>
+5. JSON by id
+   ![messageImage_1695132656203](https://github.com/MRadhityaUtomo/inventory-project/assets/124948533/85bca61f-1e0c-418f-8c9a-86a008a46931)
+
+
+
+
