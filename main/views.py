@@ -17,6 +17,7 @@ def show_main(request):
         'attack': 2500,
         'defense': 2100,
         'items' : item,
+        'count' : item.count
     }
 
     return render(request, "main.html", context)
