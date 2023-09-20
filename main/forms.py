@@ -5,5 +5,7 @@ class ItemForm(ModelForm):
     class Meta:
         model = Item
         fields = ["name",
-                  "amount",  
-                  "description"]
+                  "amount",
+                  "omen",
+                  "space",  
+                  "description",]

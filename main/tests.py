@@ -14,11 +14,11 @@ class mainTest(TestCase):
         Item.objects.create(name="Journal",amount="1",
                             description=
                             "Something to remind, vent to, and cherish",
-                            connection="Irreplaceable")
+                            omen=30)
         Item.objects.create(name="Fair ticket",amount="4",
                             description=
                             "A fair ticket to the comifuro festival, each one a different party and story",
-                            connection="Keepsake")
+                            omen=0)
         
     def test_items_can_created(self): #Test apakah attribute setelah inisiasi benar
         journal = Item.objects.get(name="Journal")

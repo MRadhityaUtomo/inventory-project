@@ -14,10 +14,8 @@ def show_main(request):
         'name': 'Muhammad Radhitya Utomo',
         'class': 'PBP D',
         'description': 'The ultimate wizard in terms of attack and defense. come and enter your wares traveler, for they will be your memoirs, reminders, keepsakes, of your adventure',
-        'attack': 2500,
-        'defense': 2100,
         'items' : item,
-        'count' : item.count
+        'count' : item.count,
     }
 
     return render(request, "main.html", context)

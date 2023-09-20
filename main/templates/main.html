@@ -14,8 +14,10 @@
     <tr>
         <th>Name</th>
         <th>Amount</th>
-        <th>Description</th>
+        <th>Omen<th>
+        <th>Space<th>
         <th>Date Added</th>
+        <th>Description</th>
     </tr>
 
     {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
@@ -24,8 +26,10 @@
         <tr>
             <td>{{item.name}}</td>
             <td>{{item.amount}}</td>
-            <td>{{item.description}}</td>
+            <td>{{item.omen}}</td>
+            <td>{{item.space}}</td>
             <td>{{item.date_added}}</td>
+            <td>{{item.description}}</td>
         </tr>
     {% endfor %}
 </table>
