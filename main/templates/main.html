@@ -9,27 +9,64 @@
     <h5>Class:</h5>
     <p>{{class}}</p>
 
-<tb>---- {{ count }} memoirs have been stored ----</tb>
+    <div style="text-align: center; margin-bottom: 25px; margin-top: 40px;">
+        <tb>---- {{ count }} memoirs have been stored ----</tb>
+    </div>
+<style>
+    /* Add space between table columns */
+    table {
+        border-collapse: separate;
+        border-spacing: 10px; /* Adjust the spacing value as needed */
+        margin: 0 auto; /* Center the table horizontally */
+    }
+
+    /* Add space inside each table cell */
+    td {
+        padding: 10px; /* Adjust the padding value as needed */
+    }
+</style>
+
 <table>
     <tr>
         <th>Name</th>
         <th>Amount</th>
-        <th>Omen<th>
-        <th>Space<th>
-        <th>Date Added</th>
+        <th></th>
+        <th>Omen</th>
+        <th>Space</th>
         <th>Description</th>
+        <th>Date Added</th>
     </tr>
 
-    {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
 
     {% for item in items %}
         <tr>
-            <td>{{item.name}}</td>
+            <td>{{item.name}} </td>
+
             <td>{{item.amount}}</td>
+            <td>
+                <form method="post" action="{% url 'main:add_amount' item.id %}">
+                    {% csrf_token %}
+                    <button type="submit">˄</button>
+                </form>
+
+                <form method="post" action="{% url 'main:dec_amount' item.id %}">
+                    {% csrf_token %}
+                    <button type="submit">˅</button>
+                </form>
+            </td>
+
             <td>{{item.omen}}</td>
             <td>{{item.space}}</td>
-            <td>{{item.date_added}}</td>
             <td>{{item.description}}</td>
+            <td>{{item.date_added}}</td>
+
+            <td>
+                <form method="post" action="{% url 'main:delete_item' item.id %}">
+                    {% csrf_token %}
+                    <button type="submit">⌫</button>
+                </form>
+            </td>
+
         </tr>
     {% endfor %}
 </table>
@@ -38,9 +75,15 @@
 
 <a href="{% url 'main:add_item' %}">
     <button>
-        Add New Entry
+        New Omen Entry
     </button>
 </a>
 
+<a href="{% url 'main:logout' %}">
+    <button>
+        Logout
+    </button>
+</a>
+<h5>Sesi terakhir login: {{ last_login }}</h5>
 
 {% endblock content %}
