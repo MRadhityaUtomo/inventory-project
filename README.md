@@ -1015,6 +1015,17 @@ letakkan di bawah `add item` :
 ```html
 <h5>Sesi terakhir login: {{ last_login }}</h5>
 ```
+<br>
+<br>
+<br>
+<br>
+
+## BONUS TUGAS 4
+<br>
+<img width="1197" alt="image" src="https://github.com/MRadhityaUtomo/inventory-project/assets/124948533/1eb7f95a-c932-4372-97a5-5129135b3b27">
+-------------------------------------------------------------------------------------------------------------------------------------------------
+<img width="1136" alt="image2" src="https://github.com/MRadhityaUtomo/inventory-project/assets/124948533/3de79b00-a77b-48c1-8504-714196a8d88c">
+
 
 
 
