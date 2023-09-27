@@ -1020,5 +1020,12 @@ letakkan di bawah `add item` :
 <br>
 <br>
 
+## BONUS TUGAS 4
+<br>
+<img width="1197" alt="image" src="https://github.com/MRadhityaUtomo/inventory-project/assets/124948533/e0c8c3b1-88d2-4564-9b41-9ade6ae89797">
+-------------------------------------------------------------------------------------------------------------------------
+
+<img width="1136" alt="image2" src="https://github.com/MRadhityaUtomo/inventory-project/assets/124948533/268ab4c9-c212-4b59-9971-a509d349ddae">
+
 
 
