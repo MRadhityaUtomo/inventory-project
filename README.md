@@ -1020,8 +1020,5 @@ letakkan di bawah `add item` :
 <br>
 <br>
 
-## BONUS TUGAS 4
-<br>
-
 
 
