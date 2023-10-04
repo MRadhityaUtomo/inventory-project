@@ -1020,5 +1020,717 @@ letakkan di bawah `add item` :
 <br>
 <br>
 
+# TUGAS 5
+
+<br>
+
+1. Selector dalam CSS digunakan untuk memilih elemen HTML yang akan diberi gaya atau tampilan khusus. Ada tiga jenis selector yang umum digunakan: Element Selector, ID Selector, dan Class Selector. Berikut adalah manfaat dan kapan waktu yang tepat untuk menggunakannya:
+
+<br>
+- Element Selector:
+
+Manfaat: Memungkinkan Anda menerapkan gaya ke semua elemen HTML dengan jenis yang sama, misalnya, mengubah semua elemen `<p>` di halaman.
+Cocok untuk menerapkan gaya dasar yang bersifat umum pada semua elemen dengan jenis yang sama, seperti mengatur font atau warna teks.
+
+<br>
+- ID Selector:
+
+Manfaat: Memungkinkan Anda memilih elemen dengan atribut id unik dan memberikan gaya atau fungsi khusus. ID selector memiliki prioritas tinggi dalam hierarki CSS.
+Idealnya digunakan untuk elemen yang unik dan hanya muncul satu kali dalam dokumen HTML, seperti header halaman dengan `id="header"`.
+
+<br>
+- Class Selector:
+
+Manfaat: Memungkinkan Anda memilih elemen dengan atribut class tertentu dan menerapkan gaya atau fungsi yang sama pada sekelompok elemen yang memiliki class yang sama. Dapat digunakan berulang kali dalam satu halaman.
+Berguna saat ingin menerapkan gaya atau perilaku yang sama pada sekelompok elemen yang tidak harus unik, seperti semua tombol di situs web Anda. Anda juga dapat menggabungkan lebih dari satu class pada elemen yang sama untuk menghasilkan gaya yang lebih kompleks.
+
+
+<br>
+<br>
+
+2. HTML5 Tags
++ `<head>` : Berisi informasi tentang dokumen seperti judul (yang ditampilkan di bilah judul browser), tautan ke berkas-berkas eksternal, meta-informasi, dan lainnya.
++ `<link>` : Digunakan untuk  menghubungkan dokumen HTML dengan berkas CSS eksternal, yang mengatur tampilan dan tata letak halaman web. Dapat digunakan untuk menyambung ke berkas eksternal lainnya seperti laman web yang menyediakan font seperti pada tugas kini.
++ `<style>` : digunakan untuk menyisipkan CSS langsung ke dalam dokumen HTML. Digunakan jika ingin mengubah tampilan web tanpa sumber daya CSS eksternal.
++ `<nav>` : Ini adalah elemen yang digunakan untuk mengelompokkan tautan-tautan navigasi dalam halaman web.
++ `<div>` : elemen divisi atau wadah yang digunakan untuk mengelompokkan elemen-elemen HTML lainnya bersama-sama. Sering digunakan untuk mengatur tata letak dan gaya tampilan halaman web.
++ `<button>` : Untuk mengimplementasikan tombol interaktif pada web yang dapat disambungkan ke fungsi eksternal.
++ `<a>` : Digunakan untuk membuat tautan atau hyperlink dalam halaman web. Dengan menggunakan atribut href, Anda dapat menautkan ke halaman web lain atau sumber daya online lainnya.
++ `<ul>` dan `<li>` : `<ul>` adalah elemen daftar tak berurutan (unordered list) dan `<li>` adalah elemen item daftar. Bersama-sama, mereka digunakan untuk membuat daftar item dalam halaman web.
++ `<br>` : break line atau untuk memulai baris baru dalam paragraf.
++ `<script>` : Digunakan untuk immplementasi fungsi JavaScript ke dalam tampilan web. Untuk contoh pada tugas ini digunakan untuk menyediakan animasi slide down dan up untuk dropdown attribute item.
+
+<br>
+<br>
+
+3. Perbedaan margin dan padding
+Padding : Merupakan jarak antara ujung border dengan isi dari elemen
+Margin : Merupakan jarak antara ujung elemen dengan elemen lain
+Perbedaan lainnya :
+<br>
+PADDING :
++ Padding hanya mempengaruhi konten atau isi di dalam elemen, misalnya dapat mengurangi tempat yang tersedia untuk isi elemen.
++ Jika elemen memiliki latar belakang yang transparan, maka padding akan memengaruhi tampilan konten yang ada di dalam elemen.
++ padding mempengaruhi ukuran elemen tersebut. 
+<br>
+MARGIN:
++ Margin dapat mempengaruhi jarak elemen lain dari elemen utama
++ Margin tidak akan memengaruhi konten atau latar belakang elemen tetangganya.
++ Margin tidak mempengaruhi ukuran sebenarnya dari elemen
+
+<br>
+Visualisasi
+```lua
++-------------------+
+|      Margin       |
+|                   |
+|   +-----------+   |
+|   |  Padding  |   |
+|   |           |   |
+|   |  Content  |   |
+|   |           |   |
+|   +-----------+   |
+|                   |
++-------------------+
+```
+
+<br>
+<br>
+
+
+4. 
+Approach : 
++ Tailwind CSS : utility-first approach, menyediakan class - class kecil yang dapat di bangun untuk gaya sendiri.
++ Bootstrap : component-based approach, artinya sudah menyediakan kompenen yang pre-built atau "dari sananya" untuk digunakan pada proyek.
+
+<br>
+
+Customizability :
++ Tailwind CSS : Dikarenakan tipe approachnya, Tailwind CSS sangat bebas untuk dikustomisasi sesuai dengan kemauan gaya proyek.
++ Bootstrap : Sudah menyediakan tema _default_ dan pada approachnya yang menyediakan pre-built components, tampilannya konsisten namun membutuhkan usaha lebih untuk kustomisasi.
+
+<br>
+
+File size :
++ Tailwind CSS : Memiliki size lebih kecil dibanding Boostrap karena hanya membutuhkan stylesheet yang dasar - kurang lebih 27Kb.
++ Bootstrap : Dengan beberapa komponennya yang prebuilt maka memiliki file size lebih besar dari CSS, JavaScript, dan beberapa dependencies seperti jQuery dan Popper.js - kurang lebih 308.5Kb.
+
+<br>
+
+Kapan menggunakan keduanya? 
+Tailwind CSS : 
+- Jika ingin kekuasaan penuh atas kustomisasi web
+- Jika nyaman dengan implementasi kode dan class dengan sendiri
+
+Bootstrap :
+- Jika ingin membuat tampilan dengan cepat secara menggunakan komponen prebuilt
+- Lebih banyak plugins dari community
+- Lebih sering dipakai secara general -> lebih mudah mencari pencerahan
+
+<br>
+<br>
+
+## Step by Step tugas 5
+
+Membuka file tugas dari local atau github
+1. Implementasi CSS dan Bootstrap dengan melakukan instalasi pada File
++ Pada `inventory_project` -> `templates` -> `base.html` :
+```html
+<head>
+    {% block meta %}
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% endblock meta %}
+</head>
+```
++ Bootstrap CSS dan JS, pada block meta
+++ CSS
+```html
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+```
+++ JS
+```html
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+J4jsl5c9zdLKaUk5Ae5f5b1bw6AUn5f5v8FZJoMxm6f5cH1" crossorigin="anonymous"></script>
+```
+++ Tambahan untuk dropdown, popover, dan tooltips
+```html
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+```
+## EDIT ON `main.html`
+
+2. Merapihkan menu dengan menggunakan navbar
+```html
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <!-- Navbar content -->
+    <div class="container-fluid">
+        <a class="navbar-brand shopping-list-title" href="#" style="font-family: 'Iceberg', cursive; font-size: 30px;">-+ ARTI-FACTS +-</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link active" aria-current="page" href="{% url 'main:logout' %}">LOGOUT</a>
+                <a class="nav-link disabled" aria-disabled="true" href="#">Logged in as : {{name}}</a>
+                <a class="nav-link disabled" aria-disabled="true">{{class}}</a>
+                <a class="nav-link active" aria-disabled="true">Sesi terakhir login: {{ last_login }}</a>
+            </div>
+        </div>
+    </div>
+</nav>
+```
+3. Mengganti style preview item menjadi dropdown
+```html
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Amount</th>
+        <th></th>
+        <th>Omen</th>
+        <th>Space</th>
+        <th>Description</th>
+        <th>Date Added</th>
+    </tr>
+
+
+    {% for item in items %}
+        <tr>
+            <td>{{item.name}} </td>
+
+            <td>{{item.amount}}</td>
+            <td>
+                <form method="post" action="{% url 'main:add_amount' item.id %}">
+                    {% csrf_token %}
+                    <button type="submit">˄</button>
+                </form>
+
+                <form method="post" action="{% url 'main:dec_amount' item.id %}">
+                    {% csrf_token %}
+                    <button type="submit">˅</button>
+                </form>
+            </td>
+
+            <td>{{item.omen}}</td>
+            <td>{{item.space}}</td>
+            <td>{{item.description}}</td>
+            <td>{{item.date_added}}</td>
+
+            <td>
+                <form method="post" action="{% url 'main:delete_item' item.id %}">
+                    {% csrf_token %}
+                    <button type="submit">⌫</button>
+                </form>
+            </td>
+
+        </tr>
+    {% endfor %}
+</table>
+
+```
+
+to
+
+```html
+<ul class="item-list">
+    {% for item in items %}
+    <li onclick="toggleDropdown(this)">
+        {{ item.name }}
+        <div class="item-attributes">
+            <p><strong>Amount:</strong> {{ item.amount }}</p>
+            <p><strong>Omen:</strong> {{ item.omen }}</p>
+            <p><strong>Space:</strong> {{ item.space }}</p>
+            <p><strong>Description:</strong> {{ item.description }}</p>
+            <p><strong>Date Added:</strong> {{ item.date_added }}</p>
+            <td>
+                <form method="post" action="{% url 'main:add_amount' item.id %}">
+                    {% csrf_token %}
+                    <button type="submit">˄</button>
+                </form>
+
+                <form method="post" action="{% url 'main:dec_amount' item.id %}">
+                    {% csrf_token %}
+                    <button type="submit">˅</button>
+                </form>
+            </td>
+            
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+```
+
+4. Menambahkan styling dropdown animation untuk show item attributes
+
+```html
+<style>
+    /* Customize the list item styling */
+    .item-list {
+        list-style: none;
+        padding: 0;
+    }
+
+    .item-list li {
+        margin: 10px 0; /* Increased margin for larger spacing */
+        padding: 10px; /* Increased padding for larger item bars */
+        cursor: pointer;
+        transition: max-height 0.5s ease-in-out; /* Add a smooth slide animation */
+        overflow: hidden;
+        max-height: 50px; /* Set the initial max height to hide the dropdown */
+        background-color: #f6fcff; /* Set the background color of the item name */
+        color: #000000; /* Set the text color inside the item name */
+    }
+
+    /* Customize the dropdown tab styling */
+    .item-attributes {
+        display: none;
+        padding: 10px;
+        border-radius: 5px;
+    }
+</style>
+```
+tambahkan pada akhir block
+
+```html
+<script>
+    function toggleDropdown(item) {
+        var dropdown = item.querySelector('.item-attributes');
+        if (dropdown.style.display === 'block') {
+            item.style.maxHeight = '50px'; // Slide up
+            setTimeout(function() {
+                dropdown.style.display = 'none';
+            }, 500); // Hide after slide animation completes (500ms)
+        } else {
+            item.style.maxHeight = '400px'; // Slide down
+            dropdown.style.display = 'block';
+        }
+    }
+</script>
+```
+
+5. tambahkan custom font "Iceberg", dan ubah warna background
+
+```html
+<head>
+    <!-- Font styling, 'Iceberg from googlefonts' -->
+    <link href='https://fonts.googleapis.com/css?family=Iceberg' rel='stylesheet'>
+    <style>
+        body {
+            font-family: 'Iceberg';
+            font-size: 22px;
+        }
+        
+    </style>
+    
+</head>
+<style>
+    /* Change the background color of the content area */
+    body {
+        background-color: #ffd932;
+    }
+</style>
+```
+
+6. Final main page result
+
+```html
+{% extends 'base.html' %}
+
+{% block content %}
+<head>
+    <!-- Font styling, 'Iceberg from googlefonts' -->
+    <link href='https://fonts.googleapis.com/css?family=Iceberg' rel='stylesheet'>
+    <style>
+        body {
+            font-family: 'Iceberg';
+            font-size: 22px;
+        }
+        
+    </style>
+    
+</head>
+<style>
+    /* Change the background color of the content area */
+    body {
+        background-color: #ffd932;
+    }
+</style>
+
+
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <!-- Navbar content -->
+    <div class="container-fluid">
+        <a class="navbar-brand shopping-list-title" href="#" style="font-family: 'Iceberg', cursive; font-size: 30px;">-+ ARTI-FACTS +-</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link active" aria-current="page" href="{% url 'main:logout' %}">LOGOUT</a>
+                <a class="nav-link disabled" aria-disabled="true" href="#">Logged in as : {{name}}</a>
+                <a class="nav-link disabled" aria-disabled="true">{{class}}</a>
+                <a class="nav-link active" aria-disabled="true">Sesi terakhir login: {{ last_login }}</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+<div style="text-align: center; margin-bottom: 25px; margin-top: 40px;">
+    <tb>---- {{ count }} memoirs have been stored ----</tb>
+</div>
+
+<style>
+    /* Customize the list item styling */
+    .item-list {
+        list-style: none;
+        padding: 0;
+    }
+
+    .item-list li {
+        margin: 10px 0; /* Increased margin for larger spacing */
+        padding: 10px; /* Increased padding for larger item bars */
+        cursor: pointer;
+        transition: max-height 0.5s ease-in-out; /* Add a smooth slide animation */
+        overflow: hidden;
+        max-height: 50px; /* Set the initial max height to hide the dropdown */
+        background-color: #f6fcff; /* Set the background color of the item name */
+        color: #000000; /* Set the text color inside the item name */
+    }
+
+    /* Customize the dropdown tab styling */
+    .item-attributes {
+        display: none;
+        padding: 10px;
+        border-radius: 5px;
+    }
+</style>
+
+<ul class="item-list">
+    {% for item in items %}
+    <li onclick="toggleDropdown(this)">
+        {{ item.name }}
+        <div class="item-attributes">
+            <p><strong>Amount:</strong> {{ item.amount }}</p>
+            <p><strong>Omen:</strong> {{ item.omen }}</p>
+            <p><strong>Space:</strong> {{ item.space }}</p>
+            <p><strong>Description:</strong> {{ item.description }}</p>
+            <p><strong>Date Added:</strong> {{ item.date_added }}</p>
+            <td>
+                
+                <form method="post" action="{% url 'main:add_amount' item.id %}">
+                    {% csrf_token %}
+                    <button type="submit">˄</button>
+                </form>
+
+                <form method="post" action="{% url 'main:dec_amount' item.id %}">
+                    {% csrf_token %}
+                    <button type="submit">˅</button>
+                </form>
+            </td>
+            <td>
+                <form method="post" action="{% url 'main:delete_item' item.id %}">
+                    {% csrf_token %}
+                    <button type="submit">⌫</button>
+                </form>
+                <a href="{% url 'main:edit_item' item.pk %}">
+                    <button>
+                        ⛭
+                    </button>
+                </a>
+            </td>
+            
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+
+<br />
+
+<a href="{% url 'main:add_item' %}" style="display: flex; justify-content: center; align-items: center; height: 100%;text-decoration: none;">
+    <button>
+        New Omen Entry
+    </button>
+</a>
+
+<script>
+    function toggleDropdown(item) {
+        var dropdown = item.querySelector('.item-attributes');
+        if (dropdown.style.display === 'block') {
+            item.style.maxHeight = '50px'; // Slide up
+            setTimeout(function() {
+                dropdown.style.display = 'none';
+            }, 500); // Hide after slide animation completes (500ms)
+        } else {
+            item.style.maxHeight = '600px'; // Slide down
+            dropdown.style.display = 'block';
+        }
+    }
+</script>
+
+{% endblock content %}
+
+```
+<br>
+<br>
+ 7. Sesuaikan page login, register, dan item editor
+
+<br>
+
+before
+```html
+{% extends 'base.html' %}
+
+{% block meta %}
+    <title>Login</title>
+{% endblock meta %}
+
+{% block content %}
+
+<div class = "login">
+
+    <h1>Login</h1>
+
+    <form method="POST" action="">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>Username: </td>
+                <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
+            </tr>
+                    
+            <tr>
+                <td>Password: </td>
+                <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><input class="btn login_btn" type="submit" value="Login"></td>
+            </tr>
+        </table>
+    </form>
+
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}     
+        
+    Don't have an account yet? <a href="{% url 'main:register' %}">Register Now</a>
+
+</div>
+
+{% endblock content %}
+```
+after
+
+```html
+{% extends 'base.html' %}
+
+{% block meta %}
+    <title>Login</title>
+{% endblock meta %}
+
+{% block content %}
+<head>
+    <!-- Font styling, 'Iceberg from googlefonts' -->
+    <link href='https://fonts.googleapis.com/css?family=Iceberg' rel='stylesheet'>
+    <style>
+        body {
+            font-family: 'Iceberg';
+            font-size: 22px;
+        }
+        
+    </style>
+    
+</head>
+<style>
+    body {
+        background-color: #ffd932;
+    }
+</style>
+<style>
+    .login {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+
+    .login-title {
+        margin-bottom: 20px;
+        font-size: 24px;
+    }
+
+    .login form {
+        text-align: center;
+    }
+
+    .login table {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .login-submit {
+        margin-top: 20px;
+    }
+</style>
+
+<div class="login">
+    <div class="login-title">
+        <h1>AFFIRM LOYALTY TO THE OLD ONES</h1>
+        <p>(Please login UwU)</p>
+    </div>
+
+    <form method="POST" action="">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>Username: </td>
+                <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
+            </tr>
+
+            <tr>
+                <td>Password: </td>
+                <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
+            </tr>
+
+            <tr class="login-submit">
+                <td colspan="2"><input class="btn login_btn" type="submit" value="Login"></td>
+            </tr>
+        </table>
+    </form>
+
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <p>Wavering about your purpose in life? Come be a hunter or pledge Allegiance Now! <a href="{% url 'main:register' %}">Register Now</a></p>
+</div>
+
+{% endblock content %}
+
+```
+
+new register :
+```html
+{% extends 'base.html' %}
+
+{% block meta %}
+    <title>Register</title>
+{% endblock meta %}
+
+{% block content %}  
+<head>
+    <!-- Font styling, 'Iceberg from googlefonts' -->
+    <link href='https://fonts.googleapis.com/css?family=Iceberg' rel='stylesheet'>
+    <style>
+        body {
+            font-family: 'Iceberg';
+            font-size: 22px;
+        }
+        
+    </style>
+    
+</head>
+<style>
+
+    body {
+        background-color: #ffd932;
+    }
+</style>
+<style>
+
+    body {
+        background-color: #ffd932;
+    }
+</style>
+<style>
+    .login-submit {
+        margin-top: 20px;
+    }
+    .login-btn {
+        background-color: #e3f2fd; 
+        color: #000000;
+        padding: 8px 40px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 30px;
+    }
+    .login-btn:hover {
+        background-color: #000000; 
+        color: #e3f2fd; 
+    }
+</style>
+
+<div class = "login">
+    
+    <h1>Register</h1>  
+
+        <form method="POST" >  
+            {% csrf_token %}  
+            <table>  
+                {{ form.as_table }}  
+                <tr>  
+                    <td></td>
+                    <td><input type="submit" name="submit" value="Daftar"/></td>  
+                </tr>  
+            </table>  
+        </form>
+
+    {% if messages %}  
+        <ul>   
+            {% for message in messages %}  
+                <li>{{ message }}</li>  
+                {% endfor %}  
+        </ul>   
+    {% endif %}
+
+</div>  
+
+{% endblock content %}
+```
+
+<br>
+<br>
+
+8. implementasi bonus 
+
+```html
+...
+    .item-list li.last-item {
+        background-color: rgb(76, 112, 194);
+        color: white;
+    }
+</style>
+
+<ul class="item-list">
+    {% for item in items %}
+    <li {% if forloop.last %}class = "last-item" {% endif %} onclick="toggleDropdown(this)">
+        ⚔ -- {{ item.name }}
+        <div class="item-attributes">
+            <p><strong>Amount:</strong> {{ item.amount }}</p>
+            <p><strong>Omen:</strong> {{ item.omen }}</p>
+            <p><strong>Space:</strong> {{ item.space }}</p>
+            <p><strong>Description:</strong> {{ item.description }}</p>
+            <p><strong>Date Added:</strong> {{ item.date_added }}</p>
+
+...
+```
+
+
+
+
+
+
 
 

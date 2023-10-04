@@ -13,7 +13,7 @@ from main.views import login_user
 from main.views import logout_user
 
 # import amount editors
-from main.views import add_amount, dec_amount, delete_item
+from main.views import add_amount, dec_amount, delete_item, edit_item
 
 app_name = 'main'
 
@@ -33,6 +33,8 @@ urlpatterns = [
     path('tambah/<int:id>/', add_amount, name='add_amount'),
     path('kurang/<int:id>/', dec_amount, name='dec_amount'),
     path('hapus/<int:id>/', delete_item, name='delete_item'),
+    path('edit-item/<int:id>', edit_item, name='edit_item'),
+
 
      
 ]

@@ -1,74 +1,89 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Artifacts</h1>
-
-    <h5>Name:</h5>
-    <p>{{name}}</p>
-
-    <h5>Class:</h5>
-    <p>{{class}}</p>
-
-    <div style="text-align: center; margin-bottom: 25px; margin-top: 40px;">
-        <tb>---- {{ count }} memoirs have been stored ----</tb>
-    </div>
+<head>
+    <!-- Font styling, 'Iceberg from googlefonts' -->
+    <link href='https://fonts.googleapis.com/css?family=Iceberg' rel='stylesheet'>
+    <style>
+        body {
+            font-family: 'Iceberg';
+            font-size: 22px;
+        }
+        
+    </style>
     
+</head>
 <style>
-    /* Add space between table columns */
-    table {
-        border-collapse: separate;
-        border-spacing: 10px; /* Adjust the spacing value as needed */
-        margin: 0 auto; /* Center the table horizontally */
-    }
-
-    /* Add space inside each table cell */
-    td {
-        padding: 10px; /* Adjust the padding value as needed */
-    }
-</style>
-
-<style>
-    /* Add space between table columns */
-    table {
-        border-collapse: collapse; /* Use 'collapse' to merge borders */
-        width: 80%; /* Set the width of the table */
-        margin: 0 auto; /* Center the table horizontally */
-    }
-
-    /* Style table headers */
-    th {
-        border: 1px solid #000; /* Add a 1px solid black border to headers */
-        padding: 10px; /* Adjust the padding value as needed */
-        text-align: left; /* Align text to the left in headers */
-    }
-
-    /* Style table cells */
-    td {
-        border: 1px solid #000; /* Add a 1px solid black border to cells */
-        padding: 10px; /* Adjust the padding value as needed */
+    body {
+        background-color: #ffd932;
     }
 </style>
 
 
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <!-- Navbar content -->
+    <div class="container-fluid">
+        <a class="navbar-brand shopping-list-title" href="#" style="font-family: 'Iceberg', cursive; font-size: 30px;">-+ ARTI-FACTS +-</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link active" aria-current="page" href="{% url 'main:logout' %}">LOGOUT</a>
+                <a class="nav-link disabled" aria-disabled="true" href="#">Logged in as : {{name}}</a>
+                <a class="nav-link disabled" aria-disabled="true">{{class}}</a>
+                <a class="nav-link active" aria-disabled="true">Sesi terakhir login: {{ last_login }}</a>
+            </div>
+        </div>
+    </div>
+</nav>
 
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Amount</th>
-        <th></th>
-        <th>Omen</th>
-        <th>Space</th>
-        <th>Description</th>
-        <th>Date Added</th>
-    </tr>
 
+<div style="text-align: center; margin-bottom: 25px; margin-top: 40px;">
+    <tb>---- {{ count }} memoirs have been stored ----</tb>
+</div>
 
+<style>
+    .item-list {
+        list-style: none;
+        padding: 0;
+    }
+
+    .item-list li {
+        margin: 10px 0; 
+        padding: 10px; 
+        cursor: pointer;
+        transition: max-height 0.5s ease-in-out; 
+        overflow: hidden;
+        max-height: 50px;
+        background-color: #f6fcff; 
+        color: #000000; 
+    }
+
+    .item-attributes {
+        display: none;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .item-list li.last-item {
+        background-color: rgb(76, 112, 194);
+        color: white;
+    }
+</style>
+
+<ul class="item-list">
     {% for item in items %}
-        <tr>
-            <td>{{item.name}} </td>
-
-            <td>{{item.amount}}</td>
+    <li {% if forloop.last %}class = "last-item" {% endif %} onclick="toggleDropdown(this)">
+        ⚔ -- {{ item.name }}
+        <div class="item-attributes">
+            <p><strong>Amount:</strong> {{ item.amount }}</p>
+            <p><strong>Omen:</strong> {{ item.omen }}</p>
+            <p><strong>Space:</strong> {{ item.space }}</p>
+            <p><strong>Description:</strong> {{ item.description }}</p>
+            <p><strong>Date Added:</strong> {{ item.date_added }}</p>
             <td>
+                
                 <form method="post" action="{% url 'main:add_amount' item.id %}">
                     {% csrf_token %}
                     <button type="submit">˄</button>
@@ -79,36 +94,44 @@
                     <button type="submit">˅</button>
                 </form>
             </td>
-
-            <td>{{item.omen}}</td>
-            <td>{{item.space}}</td>
-            <td>{{item.description}}</td>
-            <td>{{item.date_added}}</td>
-
             <td>
                 <form method="post" action="{% url 'main:delete_item' item.id %}">
                     {% csrf_token %}
                     <button type="submit">⌫</button>
                 </form>
+                <a href="{% url 'main:edit_item' item.pk %}">
+                    <button>
+                        ⛭
+                    </button>
+                </a>
             </td>
-
-        </tr>
+            
+        </div>
+    </li>
     {% endfor %}
-</table>
+</ul>
 
 <br />
 
-<a href="{% url 'main:add_item' %}">
+<a href="{% url 'main:add_item' %}" style="display: flex; justify-content: center; align-items: center; height: 100%;text-decoration: none;">
     <button>
         New Omen Entry
     </button>
 </a>
 
-<a href="{% url 'main:logout' %}">
-    <button>
-        Logout
-    </button>
-</a>
-<h5>Sesi terakhir login: {{ last_login }}</h5>
+<script>
+    function toggleDropdown(item) {
+        var dropdown = item.querySelector('.item-attributes');
+        if (dropdown.style.display === 'block') {
+            item.style.maxHeight = '50px'; 
+            setTimeout(function() {
+                dropdown.style.display = 'none';
+            }, 500); 
+        } else {
+            item.style.maxHeight = '600px'; 
+            dropdown.style.display = 'block';
+        }
+    }
+</script>
 
 {% endblock content %}
