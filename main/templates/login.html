@@ -19,11 +19,12 @@
 </head>
 <style>
     body {
-        background-color: #ffd932;
+        background-color: #131019;
     }
 </style>
 <style>
     .login {
+        color: #C9A7B8;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -48,10 +49,29 @@
     .login-submit {
         margin-top: 20px;
     }
+
+    .login-submit {
+        margin-top: 20px;
+    }
+    .login-btn {
+        background-color: #C9A7B8; 
+        color: #2A4968;
+        padding: 8px 40px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 30px;
+    }
+    .login-btn:hover {
+        background-color: #2A4968; 
+        color: #C9A7B8; 
+    }
 </style>
 
 <div class="login">
     <div class="login-title">
+        <h1 style="font-size: 55px;">ARTIFACTS.OS_</h1>
+        <br>
         <h1>AFFIRM LOYALTY TO THE OLD ONES</h1>
         <p>(Please login UwU)</p>
     </div>
@@ -60,12 +80,12 @@
         {% csrf_token %}
         <table>
             <tr>
-                <td>Username: </td>
+                <td>Username  :          </td>
                 <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
             </tr>
 
             <tr>
-                <td>Password: </td>
+                <td>Password  :          </td>
                 <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
             </tr>
 

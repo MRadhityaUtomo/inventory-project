@@ -1706,6 +1706,7 @@ new register :
 8. implementasi bonus 
 
 ```html
+<style>
 ...
     .item-list li.last-item {
         background-color: rgb(76, 112, 194);
@@ -1726,6 +1727,340 @@ new register :
 
 ...
 ```
+<br>
+<br>
+<br>
+<br>
+
+# TUGAS 6
+
+1. 
+- Synchronous programming :
+	* Tugas dan operasi dieksekusi secara berurutan secara sequential/satu per satu -> Setiap tugas harus menunggu tugas sebelumnya selesai terlebih dahulu sebelum dimulai.
+	* Suatu tugas akan berhenti saat menunggu tugas lain selesai (Blocking)
+	* Ex : Saat melakukan pemanggilan fungsi atau operasi I/O, program akan berhenti dan menunggu hasilnya sebelum melanjutkan eksekusi.
+
+<br>
+
+- Asynchronous programming :
+	* Berbeda dengan Synchronous programming, tugas dijalankan secara independen, artinya tidak harus menunggu tugas lain selesai/ dapat dijalankan secara bersamaan.
+	* Urutan penjalanan tugas tidak ditentukan.
+	* program atau tugas dapat lanjut mengeksekusi tanpa menunggu tugas lain selesai (Non-blocking).
+	* Ex : Saat melakukan pemanggilan fungsi atau operasi I/O, program dapat melanjutkan eksekusi tanpa harus menunggu hasilnya. Hasilnya akan dikembalikan nanti melalui callback atau promise.
+
+<br>
+<br>
+
+
+2. Paradigma event-driven programming -
+- Merupakan suatu konsep atau pendekatan pada pemograman dimana suatu program atau function bekerja secara respons dari kejadian lain yang dilakukan seperti input user, pemanggilan fungsi lain atau sendirinya, atau suatu perubahan status atau attribute. 
+(Javascript explain, blom)
+Contohnya pada Javascript dimana kita menambahkan `Script` dengan isi fungsi - fungsi atau metode yang akan dijalani dan menghubungkannya ke program interaktif seperti tombol atau aksi dari user yang akan menjalani metode tersebut.
+Contohnya pada Tugas 6 adalah :
+- Menyambungkan tombol delete dengan function deleteItem()
+- Menyambungkan href dengan tombol - tombol seperti `LOGOUT` dan `LOGIN`
+
+<br>
+<br>
+
+3. Tujuan utama asynchronous programming pada AJAX adalah untuk melakukan komunikasi dengan server secara asynchronous tanpa harus memuat ulang halaman web secara keseluruhan.
+Permintaan ke server dan pengolahan responsnya dilakukan secara non-blocking. Ini berarti bahwa program JavaScript dapat melanjutkan eksekusi tanpa harus menunggu respons dari server.
+
+<br>
+
+Langkah - langkah umum dalam penerapan asynchronous programming dalam AJAX :
+- Membuat objek XMLHttpRequest yang akan digunakan untuk mengirim permintaan ke server dan menerima responsnya.
+- Mengatur callback function yang akan dipanggil ketika respons dari server diterima. Callback function ini akan menangani data yang diterima dan melakukan tindakan yang sesuai.
+- Setelah mengatur callback function, kita dapat mengirim permintaan ke server menggunakan metode seperti `open()` dan `send()` . Permintaan ini dapat berupa permintaan `GET` atau `POST` , tergantung pada kebutuhan aplikasi.
+-  Ketika respons dari server diterima, callback function yang telah diatur sebelumnya akan dipanggil. Di dalam callback function, kita dapat mengakses data yang diterima dari server dan melakukan tindakan yang sesuai, seperti memperbarui tampilan halaman web atau memproses data lebih lanjut.
+
+<br>
+<br>
+
+4. 
+- Kesederhanaan dan Ukuran:
+
+	* Fetch API: Fetch API adalah API browser modern yang memberikan cara sederhana dan kuat untuk melakukan permintaan HTTP. Ia memiliki sintaksis yang bersih dan mudah dimengerti.
+	* jQuery AJAX: jQuery AJAX merupakan bagian dari perpustakaan jQuery, yang dikenal karena kemudahannya digunakan dan kompatibilitas lintas browser. Ia menyediakan abstraksi tingkat lebih tinggi di atas objek XMLHttpRequest, sehingga lebih mudah untuk digunakan.
+<br>
+- Dukungan Browser:
+
+	* Fetch API: Fetch API didukung oleh semua browser modern, termasuk Chrome, Firefox, Safari, dan Edge. Namun, mungkin tidak didukung pada browser lama seperti Internet Explorer.
+	* jQuery AJAX: jQuery AJAX telah ada selama waktu yang lama dan didukung secara luas di berbagai browser, termasuk versi lama dari Internet Explorer.
+<br>
+
+- Ukuran dan Kinerja:
+
+	* Fetch API: Fetch API adalah API browser asli dan umumnya lebih kecil dalam ukuran dibandingkan seluruh perpustakaan jQuery. Ia juga dikenal karena kinerjanya yang lebih baik karena dirancang khusus untuk browser modern.
+	* jQuery AJAX: Perpustakaan jQuery lebih besar dibandingkan dengan Fetch API. Jika Anda hanya memerlukan fungsionalitas AJAX dan tidak fitur lain yang disediakan oleh jQuery, menggunakan Fetch API dapat menghasilkan ukuran bundle yang lebih kecil dan waktu muat yang lebih cepat.
+<br>
+
+- Fleksibilitas:
+
+	* Fetch API: Fetch API adalah API tingkat rendah yang memberikan lebih banyak kendali dan fleksibilitas atas objek permintaan dan tanggapan. Ia memungkinkan Anda untuk bekerja langsung dengan janji (promises) dan menyediakan fitur seperti pembatalan permintaan dan streaming tanggapan.
+	* jQuery AJAX: jQuery AJAX menyediakan abstraksi tingkat lebih tinggi dan menyederhanakan proses pengiriman permintaan AJAX. Ia menangani tugas umum seperti serialisasi, penanganan berbagai jenis tanggapan, dan pengelolaan callback.
+
+- Fetch API:
+	* Pro: 
+		* Kode yang bersih dan sederhana: Fetch API memiliki sintaksis yang lebih mudah dimengerti, membuatnya ideal untuk kode yang bersih.
+		* Kinerja lebih baik: Dikembangkan khusus untuk browser modern, Fetch API sering menawarkan kinerja yang lebih baik.
+		* Dukungan untuk Promise: Fetch API menggunakan Promise, yang membuat pengelolaan permintaan asinkron lebih mudah dan menghindari "callback hell."
+	* Kontra: Kurang kompatibel dengan browser lama: Tidak didukung di Internet Explorer dan beberapa browser lama.
+		* Kurangnya beberapa fitur khusus jQuery: Tidak memiliki fitur seperti animasi dan manipulasi DOM yang disediakan oleh jQuery.
+
+	* Contoh Penggunaan Optimal: Fetch API ideal digunakan dalam aplikasi web modern, terutama mengoptimalkan kinerja dan ukuran bundle.
+
+- jQuery AJAX:
+	* Pro:
+		* Kompatibilitas lintas browser yang baik: Dapat digunakan di berbagai browser, termasuk versi lama dari Internet Explorer.
+		* Abstraksi tingkat tinggi: Memudahkan penanganan permintaan dan respons dengan abstraksi yang tinggi, mengurangi boilerplate code.
+		* Plugin dan ekstensi: jQuery memiliki beragam plugin yang dapat digunakan untuk tugas-tugas khusus, seperti animasi dan manipulasi DOM.
+	* Kontra:
+		* Ukuran lebih besar: Karena jQuery adalah perpustakaan besar, penggunaan jQuery hanya untuk AJAX dapat mengakibatkan ukuran bundle yang lebih besar.
+		* Kinerja mungkin kurang optimal di browser modern: jQuery mungkin tidak seefisien Fetch API dalam browser modern.
+
+	* Contoh Penggunaan Optimal: jQuery AJAX cocok untuk pengembangan aplikasi yang harus bekerja di berbagai browser, termasuk yang lebih lama.
+
+    <br>
+    <br>
+
+## STEP BY STEP
+
+# TUGAS 6
+
+## Step by Step
+
+1. Implementasi AJAX `GET`
+- Tambahkan fungsi berikut `main` -> `views.py` :
+
+//import 
+
+```python
+from django.http import HttpResponseNotFound
+from django.views.decorators.csrf import csrf_exempt
+```
+
+```python
+@csrf_exempt
+def add_item_ajax(request):
+    if request.method == 'POST':
+        name = request.POST.get("name")
+        amount = request.POST.get("amount")
+        omen = request.POST.get("omen")
+        space = request.POST.get("space")
+        description = request.POST.get("description")
+
+        user = request.user
+
+        new_item = Item(name=name, amount=amount, omen=omen, space=space, description=description, user=user)
+        new_item.save()
+
+        return HttpResponse(b"CREATED", status=201)
+
+    return HttpResponseNotFound()
+``` 
+
+- Sambungkan pada `main` -> `urls.py` -> `urlpatterns` :
+
+```python
+path('create-ajax/', add_item_ajax, name='add_item_ajax')
+```
+
+- Tampilkan pada html, `main` -> `templates` -> `main.html` :
+ubah tampilan sebelumnya dari 
+```html
+<ul class="item-list">
+    {% for item in items %}
+    <li {% if forloop.last %}class = "last-item" {% endif %} onclick="toggleDropdown(this)">
+        ⚔ -- {{ item.name }}
+        <div class="item-attributes">
+            <p><strong>Amount:</strong> {{ item.amount }}</p>
+            <p><strong>Omen:</strong> {{ item.omen }}</p>
+            <p><strong>Space:</strong> {{ item.space }}</p>
+            <p><strong>Description:</strong> {{ item.description }}</p>
+            <p><strong>Date Added:</strong> {{ item.date_added }}</p>
+            <td>
+                
+                <form method="post" action="{% url 'main:add_amount' item.id %}">
+                    {% csrf_token %}
+                    <button type="submit">˄</button>
+                </form>
+
+                <form method="post" action="{% url 'main:dec_amount' item.id %}">
+                    {% csrf_token %}
+                    <button type="submit">˅</button>
+                </form>
+            </td>
+            <td>
+                <form method="post" action="{% url 'main:delete_item' item.id %}">
+                    {% csrf_token %}
+                    <button type="submit">⌫</button>
+                </form>
+                <a href="{% url 'main:edit_item' item.pk %}">
+                    <button>
+                        ⛭
+                    </button>
+                </a>
+            </td>
+            
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+```
+menjadi <br>
+
+```html
+        <div>
+            <div id="item_list" class="items-container"></div>
+        </div>
+```
+<br>
+
+Buatlah kode untuk delete item menggunakan AJAX :
+`main` -> `views.py` :
+
+```python
+@csrf_exempt
+def delete_item_ajax(request, id):
+    if request.method == 'DELETE':
+        Item.objects.get(pk=id).delete()
+        return HttpResponse(b"DELETED", status = 201)
+    return HttpResponseNotFound()
+```
+<br>
+
+Sambungkan ke `urls.py` -> `urlpatterns` :
+
+```python
+path('delete-item/<int:id>/', delete_item_ajax, name='delete_item_ajax'),
+```
+
+<br>
+
+lalu tambahkan dan hilangkan beberapa Scripts dari `<script>` untuk overhaul style + tugas 6 menjadi :
+```html
+    <script>
+    async function getItems() {
+        return fetch("{% url 'main:get_item_json' %}").then((res) => res.json())
+    }
+
+
+    async function refreshItems() {
+        document.getElementById("item_list").innerHTML = ""
+        const items = await getItems()
+        let htmlString = "";
+        items.forEach((item) => {
+            htmlString += `
+            <div class="item-box">
+                <div class="item-header" style="color: #C9A7B8;">
+                    <h2>${item.fields.name}</h2>
+                    <p>${item.fields.date_added}</p>
+                </div>
+                <div class="item-details" style="color: #C9A7B8;">
+                    <p>Omen: ${item.fields.omen}</p>
+                    <p>Space: ${item.fields.space}</p>
+                    <p>Amount: ${item.fields.amount}</p>
+                </div>
+                <div class="item-description" style="color: #C9A7B8;">
+                    <p>${item.fields.description}</p>
+                </div>
+                <div class="item-actions">
+                        <button class ="button" onclick="deleteItem(${item.pk})" class="btn btn-danger mr-2">⌫</button>
+                </div>
+            </div>` 
+        })
+        
+        document.getElementById("item_list").innerHTML = htmlString
+    }
+
+    refreshItems()
+
+
+    function addItem() {
+        fetch("{% url 'main:add_item_ajax' %}", {
+            method: "POST",
+            body: new FormData(document.querySelector('#form'))
+        }).then(refreshItems)
+
+        document.getElementById("form").reset()
+        return false
+    }
+
+    document.getElementById("button_add").onclick = addItem
+
+    async function deleteItem(id) {
+        let url = "{% url 'main:delete_item_ajax' '12345' %}";
+        url = url.replace('12345', id);
+        const response = await fetch(url, {
+            method: "DELETE",
+        });
+        if (response.ok) {
+            refreshItems();
+        }
+    }
+
+    </script>
+```
+beberapa penjelasan :
+- func `refreshItems()` digunakan untuk display item - item kita (memoir) dengan cara AJAX
+- func `addItem()` digunakan untuk menambahkan item via page AJAX -> refresh setelah melakukannya
+- func `deleteItem()` digunakan dengan menyambungkan delete_item_ajax dengan html
+
+
+<br>
+Tambahkan tampilan AJAX untuk melakukan addItem :
+
+```html
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Item</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="form" onsubmit="return false;">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="name" class="col-form-label">Name:</label>
+                        <input type="text" class="form-control" id="name" name="name"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="amount" class="col-form-label">Amount:</label>
+                        <input type="number" class="form-control" id="amount" name="amount"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="omen" class="col-form-label">Omen:</label>
+                        <input type="number" class="form-control" id="omen" name="omen"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="space" class="col-form-label">Space:</label>
+                        <input type="number" class="form-control" id="space" name="space"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="col-form-label">Description:</label>
+                        <textarea class="form-control" id="description" name="description"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal" >Add Memoir</button>
+            </div>
+        </div>
+    </div>
+</div>
+```
+<br>
+
+dan tambahkan tombol :
+
+```html
+            <button type="button" class="button2" data-bs-toggle="modal" data-bs-target="#exampleModal">NEW MEMOIR ENTRY</button>
+```
+
+
 
 
 

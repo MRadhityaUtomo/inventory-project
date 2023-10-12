@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
 <head>
     <!-- Font styling, 'Iceberg from googlefonts' -->
     <link href='https://fonts.googleapis.com/css?family=Iceberg' rel='stylesheet'>
@@ -8,6 +9,7 @@
         body {
             font-family: 'Iceberg';
             font-size: 22px;
+            
         }
         
     </style>
@@ -15,12 +17,12 @@
 </head>
 <style>
     body {
-        background-color: #ffd932;
+        background-color: #131019;
+        background-image: linear-gradient(to bottom right, #131019, #0c0047);
     }
 </style>
 
-
-<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+<nav class="navbar navbar-light" style="background-color: #C9A7B8;">
     <!-- Navbar content -->
     <div class="container-fluid">
         <a class="navbar-brand shopping-list-title" href="#" style="font-family: 'Iceberg', cursive; font-size: 30px;">-+ ARTI-FACTS +-</a>
@@ -37,101 +39,212 @@
         </div>
     </div>
 </nav>
-
-
-<div style="text-align: center; margin-bottom: 25px; margin-top: 40px;">
-    <tb>---- {{ count }} memoirs have been stored ----</tb>
+<br>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Item</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="form" onsubmit="return false;">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="name" class="col-form-label">Name:</label>
+                        <input type="text" class="form-control" id="name" name="name"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="amount" class="col-form-label">Amount:</label>
+                        <input type="number" class="form-control" id="amount" name="amount"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="omen" class="col-form-label">Omen:</label>
+                        <input type="number" class="form-control" id="omen" name="omen"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="space" class="col-form-label">Space:</label>
+                        <input type="number" class="form-control" id="space" name="space"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="col-form-label">Description:</label>
+                        <textarea class="form-control" id="description" name="description"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal" >Add Memoir</button>
+            </div>
+        </div>
+    </div>
 </div>
-
 <style>
-    .item-list {
-        list-style: none;
-        padding: 0;
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
     }
 
-    .item-list li {
-        margin: 10px 0; 
-        padding: 10px; 
-        cursor: pointer;
-        transition: max-height 0.5s ease-in-out; 
-        overflow: hidden;
-        max-height: 50px;
-        background-color: #f6fcff; 
-        color: #000000; 
+    .sidebar {
+        border: 5px solid #2A4968;
+        width: 37%;
+        padding: 20px;
+        background-color: #C9A7B8;
+        margin-right: 20px; 
     }
 
-    .item-attributes {
-        display: none;
-        padding: 10px;
-        border-radius: 5px;
+    .memoirs-count {
+        text-align: center;
+        margin-bottom: 25px;
+        margin-top: 40px;
     }
 
-    .item-list li.last-item {
-        background-color: rgb(76, 112, 194);
-        color: white;
+    .items-container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px; 
     }
+
+    .item-box {
+        border: 5px solid #C9A7B8;
+        border-radius: 8px;
+        padding: 20px;
+        background-color: #2A4968;
+        width: calc(33.33% - 20px); 
+    }
+
+    .items-container .item-box.last-item {
+    background-color: #C9A7B8;
+    color: #2A4968;
+    }
+
+    .item-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .item-actions .delete-button {
+        order: 3;
+    }
+
+    .button {
+            background-color: #C9A7B8; 
+            color: #2A4968; 
+    }
+
+    .button:hover {
+        background-color: #122f4c;
+        color: #C9A7B8; 
+    }
+
+    .button2 {
+            background-color: #2A4968; 
+            color: #C9A7B8; 
+            padding: 5px 20px;
+    }
+
+    .button2:hover {
+        background-color: #c4c4c4;
+        color: #2A4968; 
+    }
+
+    
+
+
 </style>
 
-<ul class="item-list">
-    {% for item in items %}
-    <li {% if forloop.last %}class = "last-item" {% endif %} onclick="toggleDropdown(this)">
-        ⚔ -- {{ item.name }}
-        <div class="item-attributes">
-            <p><strong>Amount:</strong> {{ item.amount }}</p>
-            <p><strong>Omen:</strong> {{ item.omen }}</p>
-            <p><strong>Space:</strong> {{ item.space }}</p>
-            <p><strong>Description:</strong> {{ item.description }}</p>
-            <p><strong>Date Added:</strong> {{ item.date_added }}</p>
-            <td>
-                
-                <form method="post" action="{% url 'main:add_amount' item.id %}">
-                    {% csrf_token %}
-                    <button type="submit">˄</button>
-                </form>
+    <div class="container">
+        <div class="sidebar" style="color: #2A4968;">
+            <h1 style="font-size:43px ;">CURRENTLY SERVING THE OLD GODS AS : </h1>
+            <p style="font-size: 40px;">{{ name }}</p>
+            <div class="memoirs-count">
+                <p>{{ count }} memoirs have been stored</p>
+            </div>
 
-                <form method="post" action="{% url 'main:dec_amount' item.id %}">
-                    {% csrf_token %}
-                    <button type="submit">˅</button>
-                </form>
-            </td>
-            <td>
-                <form method="post" action="{% url 'main:delete_item' item.id %}">
-                    {% csrf_token %}
-                    <button type="submit">⌫</button>
-                </form>
-                <a href="{% url 'main:edit_item' item.pk %}">
-                    <button>
-                        ⛭
-                    </button>
-                </a>
-            </td>
-            
+            <button type="button" class="button2" data-bs-toggle="modal" data-bs-target="#exampleModal">NEW MEMOIR ENTRY</button>
+            <br>
+            <br>
+            <a href="{% url 'main:logout' %}">
+                <button class="button2">LOGOUT</button>
+            </a>
+            <br>
+            <br>
+            <h5>Sesi terakhir login: {{ last_login }}</h5>
         </div>
-    </li>
-    {% endfor %}
-</ul>
 
-<br />
+        <div>
+            <div id="item_list" class="items-container"></div>
+        </div>
 
-<a href="{% url 'main:add_item' %}" style="display: flex; justify-content: center; align-items: center; height: 100%;text-decoration: none;">
-    <button>
-        New Omen Entry
-    </button>
-</a>
+    </div>
+    <br>
 
-<script>
-    function toggleDropdown(item) {
-        var dropdown = item.querySelector('.item-attributes');
-        if (dropdown.style.display === 'block') {
-            item.style.maxHeight = '50px'; 
-            setTimeout(function() {
-                dropdown.style.display = 'none';
-            }, 500); 
-        } else {
-            item.style.maxHeight = '600px'; 
-            dropdown.style.display = 'block';
+
+
+
+    <script>
+    async function getItems() {
+        return fetch("{% url 'main:get_item_json' %}").then((res) => res.json())
+    }
+
+
+    async function refreshItems() {
+        document.getElementById("item_list").innerHTML = ""
+        const items = await getItems()
+        let htmlString = "";
+        items.forEach((item) => {
+            htmlString += `
+            <div class="item-box">
+                <div class="item-header" style="color: #C9A7B8;">
+                    <h2 style="background-color: #C9A7B8; color : #2A4968; font-size : 27px; padding-left: 10px;">${item.fields.name}_</h2>
+                    <p>${item.fields.date_added}</p>
+                </div>
+                <div class="item-details" style="color: #C9A7B8;">
+                    <p>Omen: ${item.fields.omen}</p>
+                    <p>Space: ${item.fields.space}</p>
+                    <p>Amount: ${item.fields.amount}</p>
+                </div>
+                <div class="item-description" style="color: #C9A7B8;">
+                    <p>${item.fields.description}</p>
+                </div>
+                <div class="item-actions">
+                        <button class ="button" onclick="deleteItem(${item.pk})" class="btn btn-danger mr-2">🗙</button>
+                </div>
+            </div>` 
+        })
+        
+        document.getElementById("item_list").innerHTML = htmlString
+    }
+
+    refreshItems()
+
+
+    function addItem() {
+        fetch("{% url 'main:add_item_ajax' %}", {
+            method: "POST",
+            body: new FormData(document.querySelector('#form'))
+        }).then(refreshItems)
+
+        document.getElementById("form").reset()
+        return false
+    }
+
+    document.getElementById("button_add").onclick = addItem
+
+    async function deleteItem(id) {
+        let url = "{% url 'main:delete_item_ajax' '12345' %}";
+        url = url.replace('12345', id);
+        const response = await fetch(url, {
+            method: "DELETE",
+        });
+        if (response.ok) {
+            refreshItems();
         }
     }
-</script>
 
+    </script>
 {% endblock content %}

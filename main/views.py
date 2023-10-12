@@ -5,6 +5,8 @@ from django.urls import reverse
 from main.models import Item
 from django.http import HttpResponse
 from django.core import serializers
+from django.http import HttpResponseNotFound
+from django.views.decorators.csrf import csrf_exempt
 
 # Registration form imports
 from django.shortcuts import redirect
@@ -85,9 +87,9 @@ def add_Item(request):
     form = ItemForm(request.POST or None)
 
     if form.is_valid() and request.method == "POST":
-        product = form.save(commit=False)
-        product.user = request.user
-        product.save()
+        item = form.save(commit=False)
+        item.user = request.user
+        item.save()
         return HttpResponseRedirect(reverse('main:show_main'))
 
     context = {'form': form}
@@ -135,10 +137,10 @@ def delete_item(request, id):
 
 
 def edit_item(request, id):
-    # Get product berdasarkan ID
+    # Get item berdasarkan ID
     item = Item.objects.get(pk = id)
 
-    # Set product sebagai instance dari form
+    # Set item sebagai instance dari form
     form = ItemForm(request.POST or None, instance=item)
 
     if form.is_valid() and request.method == "POST":
@@ -148,3 +150,37 @@ def edit_item(request, id):
 
     context = {'form': form}
     return render(request, "edit_item.html", context)
+
+
+# Fetch API
+def get_item_json(request):
+    obj_item = Item.objects.filter(user=request.user)
+    return HttpResponse(serializers.serialize('json', obj_item))
+
+
+@csrf_exempt
+def add_item_ajax(request):
+    if request.method == 'POST':
+        name = request.POST.get("name")
+        amount = request.POST.get("amount")
+        omen = request.POST.get("omen")
+        space = request.POST.get("space")
+        description = request.POST.get("description")
+
+        user = request.user
+
+        new_item = Item(name=name, amount=amount, omen=omen, space=space, description=description, user=user)
+        new_item.save()
+
+        return HttpResponse(b"CREATED", status=201)
+
+    return HttpResponseNotFound()
+
+
+@csrf_exempt
+def delete_item_ajax(request, id):
+    if request.method == 'DELETE':
+        Item.objects.get(pk=id).delete()
+        return HttpResponse(b"DELETED", status = 201)
+    return HttpResponseNotFound()
+
