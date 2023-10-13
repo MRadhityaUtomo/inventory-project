@@ -1734,6 +1734,8 @@ new register :
 
 # TUGAS 6
 
+## LINK TUGAS : muhammad-radhitya-tugas.pbp.cs.ui.ac.id
+
 1. 
 - Synchronous programming :
 	* Tugas dan operasi dieksekusi secara berurutan secara sequential/satu per satu -> Setiap tugas harus menunggu tugas sebelumnya selesai terlebih dahulu sebelum dimulai.
@@ -1823,10 +1825,6 @@ Langkah - langkah umum dalam penerapan asynchronous programming dalam AJAX :
 
     <br>
     <br>
-
-## STEP BY STEP
-
-# TUGAS 6
 
 ## Step by Step
 
