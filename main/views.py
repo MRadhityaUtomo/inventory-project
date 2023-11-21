@@ -25,6 +25,9 @@ from django.contrib.auth.decorators import login_required
 # last login cookie deetector mm
 import datetime
 
+from django.http import JsonResponse
+import json
+
 @login_required(login_url='/login')
 def show_main(request):
     item = Item.objects.filter(user=request.user)
@@ -186,3 +189,23 @@ def delete_item_ajax(request, id):
         return HttpResponse(b"DELETED", status = 201)
     return HttpResponseNotFound()
 
+@csrf_exempt
+def create_item_flutter(request):
+    if request.method == 'POST':
+        
+        data = json.loads(request.body)
+
+        new_product = Item.objects.create(
+            user = request.user,
+            name = data["name"],
+            omen = int(data["omen"]),
+            space = int(data["space"]),
+            description = data["description"],
+            amount = int(data["amount"])
+        )
+
+        new_product.save()
+
+        return JsonResponse({"status": "success"}, status=200)
+    else:
+        return JsonResponse({"status": "error"}, status=401)

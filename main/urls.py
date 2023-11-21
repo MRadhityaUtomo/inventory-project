@@ -13,7 +13,7 @@ from main.views import login_user
 from main.views import logout_user
 
 # import amount editors
-from main.views import add_amount, dec_amount, delete_item, edit_item, get_item_json, add_item_ajax, delete_item_ajax
+from main.views import add_amount, dec_amount, delete_item, edit_item, get_item_json, add_item_ajax, delete_item_ajax, create_item_flutter
 
 app_name = 'main'
 
@@ -39,6 +39,9 @@ urlpatterns = [
     path('get-item/', get_item_json, name='get_item_json'),
     path('create-ajax/', add_item_ajax, name='add_item_ajax'),
     path('delete-item/<int:id>/', delete_item_ajax, name='delete_item_ajax'),
+
+    # paths for Flutter
+    path('create-flutter/', create_item_flutter, name='create_item_flutter'),
 
      
 ]
