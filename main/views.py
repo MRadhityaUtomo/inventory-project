@@ -43,6 +43,7 @@ def show_main(request):
 
 
 # Register function
+@csrf_exempt
 def register(request):
     form = UserCreationForm()
 
@@ -58,6 +59,7 @@ def register(request):
 
 
 # Login function
+@csrf_exempt
 def login_user(request):
     if request.method == 'POST':
         username = request.POST.get('username')
