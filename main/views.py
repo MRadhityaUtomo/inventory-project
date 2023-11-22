@@ -158,6 +158,7 @@ def edit_item(request, id):
 
 
 # Fetch API
+@csrf_exempt
 def get_item_json(request):
     obj_item = Item.objects.filter(user=request.user)
     return HttpResponse(serializers.serialize('json', obj_item))

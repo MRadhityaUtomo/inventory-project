@@ -78,6 +78,7 @@ def logout(request):
         "message": "Logout gagal."
         }, status=401)
     
+@csrf_exempt
 def get_item_json(request):
     item = Item.objects.filter(user = user)
     return HttpResponse(serializers.serialize('json', item))
